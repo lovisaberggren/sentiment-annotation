@@ -1,0 +1,17 @@
+.button {
+	padding: 10px 30px;
+	margin: 0 5px 5px 0;
+	border-radius: 5px;
+	border: 1px solid #eaeaea;
+	background-color: #fff;
+	text-decoration: none;
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: small;
+	text-align: center;
+}
+
+.button:hover {
+	background-color: lightgray;
+}

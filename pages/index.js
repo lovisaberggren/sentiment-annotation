@@ -1,15 +1,17 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-
 import { supabase } from "./../lib/supabaseClient";
+import TextCard from "../components/TextCard";
+import buttonStyles from "@/styles/Button.module.css";
 
 function Page({ text, error }) {
 	return (
-		<ul>
-			<li key={text.id}>{text.text}</li>
-		</ul>
+		<>
+			<TextCard id={text.id} text={text.text} />
+			<div>
+				<button className={buttonStyles.button}>Positiv</button>
+				<button className={buttonStyles.button}>Neutral</button>
+				<button className={buttonStyles.button}>Negativ</button>
+			</div>
+		</>
 	);
 }
 
