@@ -10,16 +10,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Set up database connection
+## Set up environment variables
 
-From the root folder, install supabase-js `npm install @supabase/supabase-js`.
-
-Create a `\lib` folder and add a file named `supabaseClient.js`, paste the following code:
+In the root directory, create `.env.local` file and add your Supabase URL and anon-key.
 
 ```
-import { createClient } from '@supabase/supabase-js'
-
-export const supabase = createClient('https://<project>.supabase.co', '<your-anon-key>')
+SUPABASE_URL=<your_supabase_url>
+SUPABASE_ANON_KEY=<your_supabase_anon_key>
 ```
-
-Add your supabase project URL and anon-key.

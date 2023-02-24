@@ -31,5 +31,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-# supabase
-/lib
+# env variables
+.env.local
