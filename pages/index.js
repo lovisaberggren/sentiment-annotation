@@ -11,6 +11,9 @@ function Page({ text, error }) {
 				<button className={buttonStyles.button}>Neutral</button>
 				<button className={buttonStyles.button}>Negativ</button>
 			</div>
+			<div>
+				<button className={buttonStyles.button}>Hoppa över</button>
+			</div>
 		</>
 	);
 }
