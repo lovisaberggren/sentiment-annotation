@@ -15,6 +15,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 In the root directory, create `.env.local` file and add your Supabase URL and anon-key.
 
 ```
-SUPABASE_URL=<your_supabase_url>
-SUPABASE_ANON_KEY=<your_supabase_anon_key>
+NEXT_PUBLIC_SUPABASE_URL=<your_supabase_url>
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<your_supabase_anon_key>
 ```
