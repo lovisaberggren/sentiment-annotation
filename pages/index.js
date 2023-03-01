@@ -16,6 +16,8 @@ export default function Home() {
 			console.log("ERROR: " + error);
 		}
 		setSession(data.session);
+		console.log("data.session: ", data.session);
+		console.log("error: ", error);
 	};
 
 	supabase.auth.onAuthStateChange((e, s) => {
