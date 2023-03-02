@@ -12,21 +12,29 @@ function Label({ text, ...props }) {
 		router.push("/");
 	}
 
+	const user = props.session.user;
+
+	console.log(user);
+
+	const refreshData = () => {
+		router.replace(router.asPath);
+	};
+
 	const setLabel = async (v) => {
 		try {
 			const { error } = await supabase.from("labels").insert([v]);
 
 			if (error) throw error;
 			alert("Label created successfully");
-			router.push("/");
+			refreshData();
 		} catch (error) {
 			alert(error.message);
 		}
 	};
 
-	const handleClick = (user_id, label) => {
+	const handleClick = (label) => {
 		const values = {
-			user_id,
+			user_id: user.id,
 			text_id: text.id,
 			label,
 		};
@@ -40,25 +48,19 @@ function Label({ text, ...props }) {
 			<div>
 				<button
 					className={buttonStyles.button}
-					onClick={() =>
-						handleClick("647ae96f-5c25-4918-8a21-52ebf7c08dbf", "pos")
-					}
+					onClick={() => handleClick("pos")}
 				>
 					Positiv
 				</button>
 				<button
 					className={buttonStyles.button}
-					onClick={() =>
-						handleClick("647ae96f-5c25-4918-8a21-52ebf7c08dbf", "neu")
-					}
+					onClick={() => handleClick("neu")}
 				>
 					Neutral
 				</button>
 				<button
 					className={buttonStyles.button}
-					onClick={() =>
-						handleClick("647ae96f-5c25-4918-8a21-52ebf7c08dbf", "neg")
-					}
+					onClick={() => handleClick("neg")}
 				>
 					Negativ
 				</button>
