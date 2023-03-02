@@ -25,6 +25,10 @@ export default function Home() {
 		}
 	};
 
+	supabase.auth.onAuthStateChange((e, s) => {
+		setSession(s);
+	});
+
 	return (
 		<main>{!session ? <Login /> : <Instruction session={session} />}</main>
 	);
