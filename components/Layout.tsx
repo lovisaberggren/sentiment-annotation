@@ -1,3 +1,4 @@
+import React from "react";
 import Meta from "./Meta";
 import styles from "../styles/Layout.module.css";
 

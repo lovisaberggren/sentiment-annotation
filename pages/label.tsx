@@ -1,3 +1,4 @@
+import React from "react";
 import Meta from "../components/Meta";
 import { useRouter } from "next/router";
 import { supabase } from "./../lib/supabaseClient";
@@ -31,28 +32,29 @@ function Label({ text, error }) {
 	return (
 		<>
 			<Meta title="Klassificera" />
-			<TextCard id={text.id} text={text.text} />
+			<TextCard text={text.text} />
 			<div>
 				<button
 					className={buttonStyles.button}
 					onClick={() =>
-						handleClick(
-							"647ae96f-5c25-4918-8a21-52ebf7c08dbf",
-							"pos"
-						)
+						handleClick("647ae96f-5c25-4918-8a21-52ebf7c08dbf", "pos")
 					}
 				>
 					Positiv
 				</button>
 				<button
 					className={buttonStyles.button}
-					onClick={() => handleClick("neu")}
+					onClick={() =>
+						handleClick("647ae96f-5c25-4918-8a21-52ebf7c08dbf", "neu")
+					}
 				>
 					Neutral
 				</button>
 				<button
 					className={buttonStyles.button}
-					onClick={() => handleClick("neg")}
+					onClick={() =>
+						handleClick("647ae96f-5c25-4918-8a21-52ebf7c08dbf", "neg")
+					}
 				>
 					Negativ
 				</button>

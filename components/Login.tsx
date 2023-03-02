@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 
@@ -21,7 +22,7 @@ export default function Login() {
 			const { data, error } = await supabase.auth.signInWithOtp({
 				email,
 				options: {
-					emailRedirectTo: getURL,
+					emailRedirectTo: getURL.toString(),
 				},
 			});
 			if (error) throw error;
