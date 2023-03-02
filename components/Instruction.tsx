@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { supabase } from "../lib/supabaseClient";
 
 const Instruction = ({ session }) => {
@@ -6,6 +7,9 @@ const Instruction = ({ session }) => {
 		<>
 			<div>Instruktioner!</div>
 			<button onClick={() => supabase.auth.signOut()}>Sign out</button>
+			<button>
+				<Link href="/label">Label</Link>
+			</button>
 		</>
 	);
 };

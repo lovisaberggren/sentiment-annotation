@@ -5,8 +5,12 @@ import { supabase } from "./../lib/supabaseClient";
 import TextCard from "../components/TextCard";
 import buttonStyles from "@/styles/Button.module.css";
 
-function Label({ text, error }) {
+function Label({ text, ...props }) {
 	const router = useRouter();
+
+	if (!props.session) {
+		router.push("/");
+	}
 
 	const setLabel = async (v) => {
 		try {
