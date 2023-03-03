@@ -66,7 +66,9 @@ function Label({ text, ...props }) {
 				</button>
 			</div>
 			<div>
-				<button className={buttonStyles.button}>Hoppa över</button>
+				<button className={buttonStyles.button} onClick={() => refreshData()}>
+					Hoppa över
+				</button>
 			</div>
 		</>
 	);
