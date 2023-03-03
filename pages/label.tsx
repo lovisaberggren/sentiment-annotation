@@ -66,7 +66,10 @@ function Label({ text, ...props }) {
 				</button>
 			</div>
 			<div>
-				<button className={buttonStyles.button} onClick={() => refreshData()}>
+				<button
+					className={buttonStyles.button}
+					onClick={() => handleClick(null)}
+				>
 					Hoppa över
 				</button>
 			</div>
