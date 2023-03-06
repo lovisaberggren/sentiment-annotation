@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Meta from "../components/Meta";
 import { useRouter } from "next/router";
 import { supabase } from "./../lib/supabaseClient";
@@ -7,14 +7,16 @@ import buttonStyles from "@/styles/Button.module.css";
 
 function Label({ text, ...props }) {
 	const router = useRouter();
+	const [user, setUser] = useState(null);
 
-	if (!props.session) {
-		router.push("/");
-	}
-
-	const user = props.session.user;
-
-	console.log(user);
+	useEffect(() => {
+		if (!props.session) {
+			router.push("/");
+		}
+		if (props.session?.user) {
+			setUser(props.session.user);
+		}
+	}, [props.session]);
 
 	const refreshData = () => {
 		router.replace(router.asPath);

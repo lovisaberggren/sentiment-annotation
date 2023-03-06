@@ -7,6 +7,7 @@ import { Session } from "@supabase/supabase-js";
 
 export default function App({ Component, pageProps }) {
 	const [session, setSession] = useState<Session | null>(null);
+	const [loading, setLoading] = useState<Boolean>(true);
 
 	useEffect(() => {
 		handleSession();
@@ -21,6 +22,7 @@ export default function App({ Component, pageProps }) {
 				console.log("ERROR: " + error);
 			}
 		}
+		setLoading(false);
 	};
 
 	supabase.auth.onAuthStateChange((e, s) => {
@@ -28,7 +30,7 @@ export default function App({ Component, pageProps }) {
 	});
 	return (
 		<Layout>
-			<Component {...pageProps} session={session} />
+			{loading ? <></> : <Component {...pageProps} session={session} />}
 		</Layout>
 	);
 }
