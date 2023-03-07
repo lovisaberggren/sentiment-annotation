@@ -25,9 +25,7 @@ function Label({ text, ...props }) {
 	const setLabel = async (v) => {
 		try {
 			const { error } = await supabase.from("labels").insert([v]);
-
 			if (error) throw error;
-			alert("Label created successfully");
 			refreshData();
 		} catch (error) {
 			alert(error.message);
