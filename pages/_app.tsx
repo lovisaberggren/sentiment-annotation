@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { supabase } from "../lib/supabaseClient";
-import Layout from "../components/Layout";
-import "@/styles/globals.css";
 import { Session } from "@supabase/supabase-js";
+import { supabase } from "@/lib/supabaseClient";
+import Layout from "@/components/Layout";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
 	const [session, setSession] = useState<Session | null>(null);
-	const [loading, setLoading] = useState<Boolean>(true);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		handleSession();
@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }) {
 		setSession(s);
 	});
 	return (
-		<Layout>
+		<Layout session={session}>
 			{loading ? <></> : <Component {...pageProps} session={session} />}
 		</Layout>
 	);

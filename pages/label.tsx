@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Meta from "../components/Meta";
 import { useRouter } from "next/router";
-import { supabase } from "./../lib/supabaseClient";
-import TextCard from "../components/TextCard";
+import { supabase } from "@/lib/supabaseClient";
+import Meta from "@/components/Meta";
+import TextCard from "@/components/TextCard";
 import buttonStyles from "@/styles/Button.module.css";
+import styles from "@/styles/Layout.module.css";
 
 function Label({ text, ...props }) {
 	const router = useRouter();
@@ -43,9 +44,9 @@ function Label({ text, ...props }) {
 
 	return (
 		<>
-			<Meta title="Klassificera" />
+			<Meta title="Klassificera | Attitydanalys" />
 			<TextCard text={text.text} />
-			<div>
+			<div className={styles.labeldiv}>
 				<button
 					className={buttonStyles.button}
 					onClick={() => handleClick("pos")}
@@ -65,9 +66,9 @@ function Label({ text, ...props }) {
 					Negativ
 				</button>
 			</div>
-			<div>
+			<div className={styles.labeldiv}>
 				<button
-					className={buttonStyles.button}
+					className={buttonStyles.button2}
 					onClick={() => handleClick(null)}
 				>
 					Hoppa över

@@ -8,11 +8,54 @@
 }
 
 .main {
-	padding: 5rem 0;
+	padding: 5rem 2rem;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
+	align-items: flex-start;
+	max-width: 820px;
+	row-gap: 30px;
+}
+
+.logindiv {
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	row-gap: 20px;
+}
+
+.labeldiv {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 	align-items: center;
-	font-size: 1.25rem;
+	row-gap: 20px;
+}
+
+.input {
+	width: 100%;
+	border: 1px solid #a7a7a7;
+	border-radius: 30px;
+	padding: 15px 20px;
+	font-size: 1rem;
+}
+
+.confirmation,
+.errormessage {
+	align-self: center;
+	display: flex;
+	column-gap: 10px;
+	align-items: center;
+}
+
+.confirmation {
+	color: #00770e;
+}
+
+.errormessage {
+	color: #c72b2b;
 }
