@@ -1,0 +1,9 @@
+.mailto {
+	cursor: pointer;
+	text-decoration: underline;
+	margin-left: 10px;
+}
+
+.mailto:hover {
+	text-decoration: none;
+}
