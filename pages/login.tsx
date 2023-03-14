@@ -42,6 +42,10 @@ export default function Login() {
 		} catch (error) {
 			if (error.status === 400) {
 				setErrorMessage("Kontrollera att epostadressen är korrekt!");
+			} else if (error.status === 429) {
+				setErrorMessage(
+					"Du måste vänta minst 1 minut innan du kan hämta en ny inloggningslänk!"
+				);
 			} else {
 				setErrorMessage("Något gick fel...");
 			}
