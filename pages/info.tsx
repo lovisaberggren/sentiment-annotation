@@ -38,6 +38,15 @@ export default function Info({ session }) {
 				ledsen eller har någon annan “negativ” känsla.
 			</p>
 			<p>
+				😐 Neutrala texter är texter där det inte framgår vad skribenten har för
+				känsla, eller där skribenten skriver på ett emotionellt neutralt sätt.
+			</p>
+			<p>
+				Om du ser en text där det finns både positiva och negativa delar, välj
+				den som framgår mest. Om texten är lika mycket positiv som negativ, välj
+				neutral eller hoppa över om du är osäker.
+			</p>
+			<p>
 				Sist men inte minst, det finns inga rätta eller felaktiga svar! Jag vill
 				veta vad du tycker, och det är det som är det rätta.
 			</p>
