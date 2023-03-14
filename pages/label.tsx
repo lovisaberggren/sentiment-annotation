@@ -1,35 +1,64 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { supabase } from "@/lib/supabaseClient";
 import Meta from "@/components/Meta";
 import TextCard from "@/components/TextCard";
+import Done from "@/components/Done";
 import buttonStyles from "@/styles/Button.module.css";
 import styles from "@/styles/Layout.module.css";
 
-function Label({ text, ...props }) {
+function Label({ session }) {
 	const router = useRouter();
 	const [user, setUser] = useState(null);
+	const [text, setText] = useState({ text: null, id: null });
+	const [done, setDone] = useState(false);
+	const [isError, setIsError] = useState(false);
 
 	useEffect(() => {
-		if (!props.session) {
+		if (!session) {
 			router.push("/");
 		}
-		if (props.session?.user) {
-			setUser(props.session.user);
+		if (session?.user) {
+			setUser(session.user);
 		}
-	}, [props.session]);
+	}, [session]);
 
-	const refreshData = () => {
-		router.replace(router.asPath);
-	};
+	useEffect(() => {
+		if (user) {
+			getText();
+		}
+	}, [user]);
+
+	async function getText() {
+		try {
+			const { data, error } = await supabase.rpc("get_random_text_param", {
+				uid: user.id,
+			});
+
+			if (error || !data) {
+				throw error || new Error("No data");
+			}
+			setIsError(false);
+			if (data.length == 0) {
+				setDone(true);
+			} else {
+				setText(data[0]);
+			}
+		} catch (error) {
+			setIsError(true);
+			console.log("error", error.message);
+		}
+	}
 
 	const setLabel = async (v) => {
 		try {
 			const { error } = await supabase.from("labels").insert([v]);
 			if (error) throw error;
-			refreshData();
+			getText();
 		} catch (error) {
-			alert(error.message);
+			setIsError(true);
+			console.log("error", error.message);
 		}
 	};
 
@@ -45,48 +74,52 @@ function Label({ text, ...props }) {
 	return (
 		<>
 			<Meta title="Klassificera | Attitydanalys" />
-			<TextCard text={text.text} />
-			<div className={styles.labeldiv}>
-				<button
-					className={buttonStyles.button}
-					onClick={() => handleClick("pos")}
-				>
-					Positiv
-				</button>
-				<button
-					className={buttonStyles.button}
-					onClick={() => handleClick("neu")}
-				>
-					Neutral
-				</button>
-				<button
-					className={buttonStyles.button}
-					onClick={() => handleClick("neg")}
-				>
-					Negativ
-				</button>
-			</div>
-			<div className={styles.labeldiv}>
-				<button
-					className={buttonStyles.button2}
-					onClick={() => handleClick(null)}
-				>
-					Hoppa över
-				</button>
-			</div>
+			{isError ? (
+				<p className={styles.errormessage}>
+					<AiOutlineExclamationCircle />
+					Något gick fel, prova igen senare!
+				</p>
+			) : (
+				<>
+					{done ? (
+						<Done />
+					) : (
+						<>
+							<TextCard text={text.text} />
+							<div className={styles.labeldiv}>
+								<button
+									className={buttonStyles.button}
+									onClick={() => handleClick("neg")}
+								>
+									Negativ
+								</button>
+								<button
+									className={buttonStyles.button}
+									onClick={() => handleClick("neu")}
+								>
+									Neutral
+								</button>
+								<button
+									className={buttonStyles.button}
+									onClick={() => handleClick("pos")}
+								>
+									Positiv
+								</button>
+							</div>
+							<div className={styles.labeldiv}>
+								<button
+									className={buttonStyles.button2}
+									onClick={() => handleClick(null)}
+								>
+									Hoppa över
+								</button>
+							</div>
+						</>
+					)}
+				</>
+			)}
 		</>
 	);
-}
-
-export async function getServerSideProps() {
-	const { data, error } = await supabase.rpc("get_random_text");
-
-	return {
-		props: {
-			text: data[0],
-			error: error,
-		},
-	};
 }
 
 export default Label;
