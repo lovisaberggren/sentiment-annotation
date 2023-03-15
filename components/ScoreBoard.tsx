@@ -8,6 +8,7 @@ const ScoreBoard = ({ scores, user_id }) => {
 	scores.map((score) => {
 		if (i < 4 || user_id === score.user_id) {
 			score.ord = i;
+			score.name = placeholderNames[i - 1];
 			scoreBoard.push(score);
 		}
 		i++;
@@ -26,11 +27,7 @@ const ScoreBoard = ({ scores, user_id }) => {
 							>
 								<p>
 									<span className={styles.number}>#{score.ord}</span>
-									{user_id === score.user_id
-										? "You"
-										: placeholderNames[
-												Math.floor(Math.random() * scoreBoard.length)
-										  ]}
+									{user_id === score.user_id ? "You" : score.name}
 								</p>
 								<p>{score.nr_label}st</p>
 							</li>
