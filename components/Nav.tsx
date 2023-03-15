@@ -14,23 +14,22 @@ const Nav = ({ session }) => {
 	const router = useRouter();
 
 	return (
-		<>
-			{session ? (
-				<nav className={navStyles.nav}>
-					<ul>
-						<li>
-							<Link
-								href="/"
-								className={
-									router.pathname == "/"
-										? navStyles.active
-										: navStyles.nonActive
-								}
-							>
-								<AiTwotoneHome />
-								Start
-							</Link>
-						</li>
+		<nav className={navStyles.nav}>
+			<ul className={navStyles.collapseul}>
+				<li>
+					<Link
+						href="/"
+						className={
+							router.pathname == "/" ? navStyles.active : navStyles.nonActive
+						}
+					>
+						<AiTwotoneHome />
+						Start
+					</Link>
+				</li>
+
+				{session ? (
+					<>
 						<li>
 							<Link
 								href="/info"
@@ -57,42 +56,27 @@ const Nav = ({ session }) => {
 								Klassificera
 							</Link>
 						</li>
-					</ul>
-					<ul>
-						<li>
-							<a onClick={() => supabase.auth.signOut()}>
-								Logga ut <AiOutlineArrowRight />
-							</a>
-						</li>
-					</ul>
-				</nav>
-			) : (
-				<nav className={navStyles.nav}>
-					<ul>
-						<li>
-							<Link
-								href="/"
-								className={
-									router.pathname == "/"
-										? navStyles.active
-										: navStyles.nonActive
-								}
-							>
-								<AiTwotoneHome />
-								Start
-							</Link>
-						</li>
-					</ul>
-					<ul>
-						<li>
-							<Link href="/login">
-								Logga in <AiOutlineArrowRight />
-							</Link>
-						</li>
-					</ul>
-				</nav>
-			)}
-		</>
+					</>
+				) : (
+					<></>
+				)}
+			</ul>
+			<ul>
+				{session ? (
+					<li>
+						<a onClick={() => supabase.auth.signOut()}>
+							Logga ut <AiOutlineArrowRight />
+						</a>
+					</li>
+				) : (
+					<li>
+						<Link href="/login">
+							Logga in <AiOutlineArrowRight />
+						</Link>
+					</li>
+				)}
+			</ul>
+		</nav>
 	);
 };
 
