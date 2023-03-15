@@ -33,6 +33,12 @@ export default function Home({ session }) {
 				Exempel: Användare “62” har klassificerat texten “Det var den bästa
 				köttbullen jag ätit!” som “positiv”.
 			</p>
+			<p>
+				Du kan klassificera hur många eller hur få texter som du känner för! Det
+				går alltid bra att komma tillbaka senare, och om du då skulle vara
+				utloggad kan du enkelt fylla i din epostadress igen för att få en ny
+				inloggningslänk.
+			</p>
 			{session ? (
 				<Link className={buttonStyles.button1} href="/info">
 					Sätt igång!
@@ -42,12 +48,6 @@ export default function Home({ session }) {
 					Sätt igång!
 				</Link>
 			)}
-			<p>
-				Du kan klassificera hur många eller hur få texter som du känner för! Det
-				går alltid bra att komma tillbaka senare, och om du då skulle vara
-				utloggad kan du enkelt fylla i din epostadress igen för att få en ny
-				inloggningslänk.
-			</p>
 			<Contact />
 		</>
 	);
