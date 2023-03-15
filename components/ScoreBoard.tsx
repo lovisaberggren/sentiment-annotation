@@ -20,7 +20,10 @@ const ScoreBoard = ({ scores, user_id }) => {
 				<ul>
 					<>
 						{scoreBoard.map((score) => (
-							<li className={user_id === score.user_id ? styles.selected : ""}>
+							<li
+								key={score.user_id}
+								className={user_id === score.user_id ? styles.selected : ""}
+							>
 								<p>
 									<span className={styles.number}>#{score.ord}</span>
 									{user_id === score.user_id
