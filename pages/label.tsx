@@ -7,11 +7,13 @@ import TextCard from "@/components/TextCard";
 import Done from "@/components/Done";
 import buttonStyles from "@/styles/Button.module.css";
 import styles from "@/styles/Layout.module.css";
+import ScoreBoard from "@/components/ScoreBoard";
 
 function Label({ session }) {
 	const router = useRouter();
 	const [user, setUser] = useState(null);
 	const [text, setText] = useState({ text: null, id: null });
+	const [scoreBoard, setScoreBoard] = useState([]);
 	const [done, setDone] = useState(false);
 	const [isError, setIsError] = useState(false);
 
@@ -30,6 +32,10 @@ function Label({ session }) {
 		}
 	}, [user]);
 
+	useEffect(() => {
+		if (user) getScoreBoard();
+	}, [text]);
+
 	async function getText() {
 		try {
 			const { data, error } = await supabase.rpc("get_random_text_param", {
@@ -47,6 +53,19 @@ function Label({ session }) {
 			}
 		} catch (error) {
 			setIsError(true);
+			console.log("error", error.message);
+		}
+	}
+
+	async function getScoreBoard() {
+		try {
+			const { data, error } = await supabase.rpc("get_score_board");
+			if (error || !data) {
+				throw error || new Error("No data");
+			}
+			setScoreBoard(data);
+		} catch (error) {
+			setScoreBoard([]);
 			console.log("error", error.message);
 		}
 	}
@@ -114,6 +133,21 @@ function Label({ session }) {
 									Hoppa över
 								</button>
 							</div>
+							{user ? (
+								<ScoreBoard scores={scoreBoard} user_id={user.id} />
+							) : (
+								<></>
+							)}
+							<h2>Kom ihåg!</h2>
+							<p>
+								• Du kan klassificera hur många eller få texter du vill, och det
+								går alltid bra att komma tillbaka och fortsätta senare.
+							</p>
+							<p>• Fokusera på vilken känsla skribenten har.</p>
+							<p>• Välj "neutral" för texter du tycker är neutrala.</p>
+							<p>
+								• Hoppa över om du är osäker eller om texten inte är lämplig.
+							</p>
 						</>
 					)}
 				</>
