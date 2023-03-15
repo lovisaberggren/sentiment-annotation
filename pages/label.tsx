@@ -145,7 +145,9 @@ function Label({ session }) {
 									går alltid bra att komma tillbaka och fortsätta senare.
 								</li>
 								<li>Fokusera på vilken känsla skribenten har.</li>
-								<li>Välj "neutral" för texter du tycker är neutrala.</li>
+								<li>
+									Välj &quot;neutral&quot; för texter du tycker är neutrala.
+								</li>
 								<li>
 									Hoppa över om du är osäker eller om texten inte är lämplig.
 								</li>
