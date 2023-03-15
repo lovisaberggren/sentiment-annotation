@@ -24,3 +24,7 @@ a {
 .active {
 	border-bottom: 1px #000 solid;
 }
+
+span {
+	font-weight: bold;
+}
