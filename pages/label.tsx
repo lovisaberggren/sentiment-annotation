@@ -139,15 +139,17 @@ function Label({ session }) {
 								<></>
 							)}
 							<h2>Kom ihåg!</h2>
-							<p>
-								• Du kan klassificera hur många eller få texter du vill, och det
-								går alltid bra att komma tillbaka och fortsätta senare.
-							</p>
-							<p>• Fokusera på vilken känsla skribenten har.</p>
-							<p>• Välj "neutral" för texter du tycker är neutrala.</p>
-							<p>
-								• Hoppa över om du är osäker eller om texten inte är lämplig.
-							</p>
+							<ul className={styles.remiderlist}>
+								<li>
+									Du kan klassificera hur många eller få texter du vill, och det
+									går alltid bra att komma tillbaka och fortsätta senare.
+								</li>
+								<li>Fokusera på vilken känsla skribenten har.</li>
+								<li>Välj "neutral" för texter du tycker är neutrala.</li>
+								<li>
+									Hoppa över om du är osäker eller om texten inte är lämplig.
+								</li>
+							</ul>
 						</>
 					)}
 				</>
