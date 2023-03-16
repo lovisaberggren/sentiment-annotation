@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
@@ -6,16 +6,30 @@ import {
 	AiOutlineArrowRight,
 	AiFillExclamationCircle,
 	AiFillEdit,
+	AiOutlineMenu,
+	AiOutlineClose,
 } from "react-icons/ai";
 import { supabase } from "@/lib/supabaseClient";
 import navStyles from "@/styles/Nav.module.css";
 
 const Nav = ({ session }) => {
 	const router = useRouter();
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+	const toggleHamMenu = () => {
+		setMenuIsOpen(!menuIsOpen);
+	};
 
 	return (
 		<nav className={navStyles.nav}>
-			<ul className={navStyles.collapseul}>
+			<ul className={menuIsOpen ? navStyles.openul : navStyles.collapseul}>
+				<li className={navStyles.hammenuicon}>
+					{menuIsOpen ? (
+						<AiOutlineClose onClick={toggleHamMenu} />
+					) : (
+						<AiOutlineMenu onClick={toggleHamMenu} />
+					)}
+				</li>
 				<li>
 					<Link
 						href="/"
