@@ -4,10 +4,11 @@ import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { supabase } from "@/lib/supabaseClient";
 import Meta from "@/components/Meta";
 import TextCard from "@/components/TextCard";
-import Done from "@/components/Done";
+import Done from "@/components/text/Done";
+import ScoreBoard from "@/components/ScoreBoard";
+import Reminders from "@/components/text/Reminders";
 import buttonStyles from "@/styles/Button.module.css";
 import styles from "@/styles/Layout.module.css";
-import ScoreBoard from "@/components/ScoreBoard";
 
 function Label({ session }) {
 	const router = useRouter();
@@ -16,6 +17,21 @@ function Label({ session }) {
 	const [scoreBoard, setScoreBoard] = useState([]);
 	const [done, setDone] = useState(false);
 	const [isError, setIsError] = useState(false);
+
+	const buttons = [
+		{
+			text: "Negativ",
+			handleParam: "neg",
+		},
+		{
+			text: "Neutral",
+			handleParam: "neu",
+		},
+		{
+			text: "Positiv",
+			handleParam: "pos",
+		},
+	];
 
 	useEffect(() => {
 		if (!session) {
@@ -106,24 +122,14 @@ function Label({ session }) {
 						<>
 							<TextCard text={text.text} />
 							<div className={styles.labeldiv}>
-								<button
-									className={buttonStyles.button}
-									onClick={() => handleClick("neg")}
-								>
-									Negativ
-								</button>
-								<button
-									className={buttonStyles.button}
-									onClick={() => handleClick("neu")}
-								>
-									Neutral
-								</button>
-								<button
-									className={buttonStyles.button}
-									onClick={() => handleClick("pos")}
-								>
-									Positiv
-								</button>
+								{buttons.map((button) => (
+									<button
+										className={buttonStyles.button1}
+										onClick={() => handleClick(button.handleParam)}
+									>
+										{button.text}
+									</button>
+								))}
 							</div>
 							<div className={styles.labeldiv}>
 								<button
@@ -136,16 +142,7 @@ function Label({ session }) {
 						</>
 					)}
 					{user ? <ScoreBoard scores={scoreBoard} user_id={user.id} /> : <></>}
-					<h2>Kom ihåg!</h2>
-					<ul className={styles.remiderlist}>
-						<li>
-							Du kan klassificera hur många eller få texter du vill, och det går
-							alltid bra att komma tillbaka och fortsätta senare.
-						</li>
-						<li>Fokusera på vilken känsla skribenten har.</li>
-						<li>Välj &quot;neutral&quot; för texter du tycker är neutrala.</li>
-						<li>Hoppa över om du är osäker eller om texten inte är lämplig.</li>
-					</ul>
+					<Reminders />
 				</>
 			)}
 		</>
