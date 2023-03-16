@@ -56,6 +56,10 @@
 		align-self: flex-start;
 	}
 
+	.openul li:not(:first-child) {
+		margin-top: 15px;
+	}
+
 	.openul {
 		flex-direction: column;
 		align-items: flex-start;
