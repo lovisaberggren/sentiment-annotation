@@ -124,6 +124,7 @@ function Label({ session }) {
 							<div className={styles.labeldiv}>
 								{buttons.map((button) => (
 									<button
+										key={button.handleParam}
 										className={buttonStyles.button1}
 										onClick={() => handleClick(button.handleParam)}
 									>
