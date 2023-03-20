@@ -1,0 +1,15 @@
+.card {
+	padding: 1.5rem;
+	text-align: left;
+	text-decoration: none;
+	border: 1px solid #eaeaea;
+	border-radius: 10px;
+	max-width: 600px;
+	align-self: center;
+}
+
+@media only screen and (max-width: 380px) {
+	.card {
+		width: 80%;
+	}
+}
