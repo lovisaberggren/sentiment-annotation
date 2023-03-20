@@ -11,6 +11,12 @@ const placeholderNames = [
 	"Anonym mullvad",
 	"Anonym sork",
 	"Anonym kapybara",
+	"Anonym fladdermus",
+	"Anonym igelkott",
+	"Anonym grävling",
+	"Anonymt murmeldjur",
+	"Anonym lämmel",
+	"Anonym surikat",
 ];
 
 export { placeholderNames };
