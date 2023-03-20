@@ -60,7 +60,25 @@
 	color: #c72b2b;
 }
 
+.reminderHeader {
+	margin-left: 10px;
+}
+
+.remiderlist {
+	margin: 0 10px;
+}
+
 .remiderlist li {
 	padding-bottom: 25px;
 	margin-left: 20px;
+}
+
+@media only screen and (max-width: 350px) {
+	.labeldiv {
+		flex-direction: column;
+	}
+
+	.main {
+		padding: 2rem 1rem;
+	}
 }

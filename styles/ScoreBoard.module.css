@@ -4,15 +4,15 @@
 	text-decoration: none;
 	border: 1px solid #eaeaea;
 	border-radius: 10px;
-	width: 100%;
 	align-self: center;
+	width: 100%;
 	background-color: #f5f5f5;
 	margin-top: 20px;
 	margin-bottom: 40px;
 }
 
 .scoreboard ul {
-	padding: 10px;
+	padding: 10px 0;
 	margin-top: 10px;
 }
 
@@ -38,4 +38,11 @@
 	justify-content: center;
 	align-items: center;
 	padding: 20px;
+}
+
+@media only screen and (max-width: 380px) {
+	.scoreboard {
+		width: 290px;
+		margin-top: 0;
+	}
 }

@@ -4,7 +4,7 @@ import styles from "@/styles/Layout.module.css";
 const Reminders = () => {
 	return (
 		<>
-			<h2>Kom ihåg!</h2>
+			<h2 className={styles.reminderHeader}>Kom ihåg!</h2>
 			<ul className={styles.remiderlist}>
 				<li>
 					Du kan klassificera hur många eller få texter du vill, och det går
