@@ -28,7 +28,9 @@ const ScoreBoard = ({ scores, user_id }) => {
 			i++;
 		});
 		setScoreBoard(tempScoreBoard);
-		setIsLoading(false);
+		if (tempScoreBoard.length > 0) {
+			setIsLoading(false);
+		}
 	}, [scores, user_id]);
 
 	return (
