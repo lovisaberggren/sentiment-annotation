@@ -11,7 +11,7 @@ export default function Info({ session }) {
 
 	useEffect(() => {
 		if (!session) {
-			router.push("/");
+			router.push("/login");
 		}
 	}, [session]);
 
