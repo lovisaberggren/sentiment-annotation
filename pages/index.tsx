@@ -1,20 +1,17 @@
-import React from "react";
-import Link from "next/link";
-import Contact from "@/components/text/Contact";
-import buttonStyles from "@/styles/Button.module.css";
-import About from "@/components/text/About";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Home({ session }) {
-	return (
-		<>
-			<About />
-			<Link
-				className={buttonStyles.button1}
-				href={session ? "/info" : "/login"}
-			>
-				Sätt igång!
-			</Link>
-			<Contact />
-		</>
-	);
+	const router = useRouter();
+
+	useEffect(() => {
+		if (!session) {
+			router.push("/start");
+		}
+		if (session) {
+			router.push("/info");
+		}
+	}, [session]);
+
+	return <></>;
 }

@@ -32,9 +32,11 @@ const Nav = ({ session }) => {
 				</li>
 				<li>
 					<Link
-						href="/"
+						href="/start"
 						className={
-							router.pathname == "/" ? navStyles.active : navStyles.nonActive
+							router.pathname == "/start"
+								? navStyles.active
+								: navStyles.nonActive
 						}
 					>
 						<AiTwotoneHome />

@@ -35,7 +35,7 @@ function Label({ session }) {
 
 	useEffect(() => {
 		if (!session) {
-			router.push("/");
+			router.push("/start");
 		}
 		if (session?.user) {
 			setUser(session.user);
