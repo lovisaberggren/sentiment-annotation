@@ -16,7 +16,12 @@ const ScoreBoard = ({ scores, user_id }) => {
 				score.ord = i;
 				const randomNumber = seedRandom(score.user_id);
 				if (user_id === score.user_id) {
-					score.name = "You";
+					score.name =
+						"You (" +
+						placeholderNames[
+							Math.floor(randomNumber() * placeholderNames.length)
+						] +
+						")";
 				} else {
 					score.name =
 						placeholderNames[
