@@ -4,6 +4,7 @@ import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { supabase } from "@/lib/supabaseClient";
 import Meta from "@/components/Meta";
 import TextCard from "@/components/TextCard";
+import AppClosed from "@/components/info/AppClosed";
 import Done from "@/components/text/Done";
 import ScoreBoard from "@/components/ScoreBoard";
 import Reminders from "@/components/text/Reminders";
@@ -17,6 +18,8 @@ function Label({ session }) {
 	const [scoreBoard, setScoreBoard] = useState([]);
 	const [done, setDone] = useState(false);
 	const [isError, setIsError] = useState(false);
+
+	const appClosed = true;
 
 	const buttons = [
 		{
@@ -116,32 +119,39 @@ function Label({ session }) {
 				</p>
 			) : (
 				<>
-					{done ? (
-						<Done />
+					{appClosed ? (
+						<AppClosed />
 					) : (
 						<>
-							<TextCard text={text.text} />
-							<div className={styles.labeldiv}>
-								{buttons.map((button) => (
-									<button
-										key={button.handleParam}
-										className={buttonStyles.button1}
-										onClick={() => handleClick(button.handleParam)}
-									>
-										{button.text}
-									</button>
-								))}
-							</div>
-							<div className={styles.labeldiv}>
-								<button
-									className={buttonStyles.button2}
-									onClick={() => handleClick(null)}
-								>
-									Hoppa över
-								</button>
-							</div>
+							{done ? (
+								<Done />
+							) : (
+								<>
+									<TextCard text={text.text} />
+									<div className={styles.labeldiv}>
+										{buttons.map((button) => (
+											<button
+												key={button.handleParam}
+												className={buttonStyles.button1}
+												onClick={() => handleClick(button.handleParam)}
+											>
+												{button.text}
+											</button>
+										))}
+									</div>
+									<div className={styles.labeldiv}>
+										<button
+											className={buttonStyles.button2}
+											onClick={() => handleClick(null)}
+										>
+											Hoppa över
+										</button>
+									</div>
+								</>
+							)}
 						</>
 					)}
+
 					{user ? <ScoreBoard scores={scoreBoard} user_id={user.id} /> : <></>}
 					<Reminders />
 				</>
