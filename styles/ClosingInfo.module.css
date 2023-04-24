@@ -8,6 +8,16 @@
 	width: 100%;
 }
 
+.yellow {
+	background-color: #fff6e8;
+	border-color: #e8b15f;
+}
+
+.red {
+	background-color: #ffc7c7;
+	border-color: #ed4040;
+}
+
 .text2 {
 	grid-column: 1 / span 2;
 	grid-row: 2;
